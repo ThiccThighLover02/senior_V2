@@ -24,14 +24,37 @@ $(document).ready(function() {
 
     buttonContainer.on("click", "#accept-senior", function(){
         let requestId = $(this).data("request-id");
-        getData(`queries/create_senior.php?id=${requestId}`)
+        getData(`queries/create_senior.php?id=${requestId}&action=approve`)
         .then(response => response.text())
         .then(data => {
             alert(data);
+            window.location.href = "./admin_requests.php";
         })
         .catch(err => {
             alert(`Catched this ${err}`);
         })
-        alert(requestId);
     });
+
+    buttonContainer.on("click", "#reject-senior", function(){
+        let requestId = $(this).data("request-id");
+        alert(requestId);
+        getData(`queries/create_senior.php?id=${requestId}&action=reject`)
+        .then(response => {
+            if(!response.ok){
+                alert("An error has occurred, try again");
+            }
+            return response.json();
+        })
+        .then(data => {
+            let {success, message} = data;
+            if(success){
+                alert(message);
+                window.location.href = "./admin_requests.php";
+            }
+        })
+        .catch(err => {
+            alert(`Catched this ${err}`);
+        })
+
+    })
 });

@@ -45,11 +45,11 @@ function addSenior($conn, $data, $method)
 
         //this will handle the check if images exist
         //if exists, it will move to senior folder, if not it will return an error
-        if (!handleImage($orig_path, "bar_certificate", $new_path, $data['barangay_certificate'])) {
+        if (!handleImage($orig_path, "bar_certificate/", $new_path, $data['barangay_certificate'])) {
             echo "an error has occurred with bar_certificate";
-        } elseif (!handleImage($orig_path, "birth_certificate", $new_path, $data['birth_certificate'])) {
+        } elseif (!handleImage($orig_path, "birth_certificate/", $new_path, $data['birth_certificate'])) {
             echo "an error has occurred with birth_certificate";
-        } elseif (!handleImage($orig_path, "profile", $new_path, $data['id_pic'])) {
+        } elseif (!handleImage($orig_path, "profile/", $new_path, $data['id_pic'])) {
             echo "an error has occurred with profile picture";
         }
         // this is where the images end
@@ -103,7 +103,7 @@ function getAllSeniors($conn)
 
 function getOneSenior($conn, $id)
 {
-    $senior_sql = $conn->prepare("SELECT * FROM senior_tbl S INNER JOIN purok_tbl P ON S.senior_purok_id=P.purok_id INNER JOIN barangay_tbl B ON S.senior_barangay_id=B.barangay_id INNER JOIN municipality_tbl M ON S.senior_municipality_id=M.municipality_id INNER JOIN province_tbl Pr ON S.senior_province_id=Pr.province_id INNER JOIN education_tbl E ON S.education_id=E.education_id INNER JOIN religion_tbl R ON S.religion_id=R.religion_id INNER JOIN civil_tbl C ON S.civil_id=C.civil_id WHERE senior_id=?");
+    $senior_sql = $conn->prepare("SELECT * FROM senior_tbl S INNER JOIN purok_tbl P ON S.senior_purok_id=P.purok_id INNER JOIN barangay_tbl B ON S.senior_barangay_id=B.barangay_id INNER JOIN municipality_tbl M ON S.senior_municipality_id=M.municipality_id INNER JOIN province_tbl Pr ON S.senior_province_id=Pr.province_id INNER JOIN education_tbl E ON S.education_id=E.education_id INNER JOIN religion_tbl R ON S.religion_id=R.religion_id INNER JOIN civil_tbl C ON S.civil_id=C.civil_id INNER JOIN blood_tbl Bl ON S.blood_id=Bl.blood_id INNER JOIN physical_tbl Ph ON S.physical_id=Ph.physical_id WHERE senior_id=?");
     $senior_sql->bind_param("i", $id);
     $senior_sql->execute();
     $senior_result = $senior_sql->get_result();

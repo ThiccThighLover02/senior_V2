@@ -8,7 +8,7 @@ $html = "";
 if(isset($_GET['table']) && $_GET['table'] === 'seniors'){
     $senior_row = getAllSeniors($conn); //get all the seniors from the database
     $html .= <<<HTML
-    <table class="table table-striped table-bordered" id="senior-table">
+    <table class="table table-sm table-striped table-bordered" id="senior-table">
         <thead>
             <tr>
                 <th>Senior No</th>

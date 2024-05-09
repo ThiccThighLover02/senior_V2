@@ -23,7 +23,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] === "admin") {
         <title>Document</title>
     </head>
 
-    <body class="bg-light overflow-hidden">
+    <body class="bg-light">
         <?php
         $user = "admin";
         $active = "requests";

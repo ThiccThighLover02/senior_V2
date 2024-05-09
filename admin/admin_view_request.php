@@ -42,10 +42,10 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] === "admin") {
                 </div>
             </div>
             <div class="col-lg-3">
-                <div id="button-container" class="container-fluid d-grid gap-2 mt-3">
+                <div id="button-container" data-request-id=<?= $request_id ?> class="container-fluid d-grid gap-2 mt-3">
                     <button id="view-attach" class="btn btn-primary text-start text-white"><i class="fa-regular fa-eye"></i> View Attachments</button>
                     <button id="accept-senior" data-request-id=<?= $request_id ?> class="btn btn-success text-start text-white"><i class="fa-solid fa-print"></i> Accept Request</button>
-                    <button id="reject-senior" class="btn btn-danger text-start text-white"><i class="fa-solid fa-circle-info"></i>Reject Request</button>
+                    <button id="reject-senior" data-request-id=<?= $request_id ?> class="btn btn-danger text-start text-white"><i class="fa-solid fa-circle-info"></i>Reject Request</button>
                 </div>
             </div>
         </div>
