@@ -63,3 +63,18 @@ function getRequestInfo($conn, $id){
 
     return mysqli_fetch_assoc($request_result);
 }
+
+function requestExist($conn, $data){ //This just checks if the request exists
+    $request_sql = $conn->prepare("SELECT * FROM request_tbl WHERE first_name=? AND middle_name=? AND last_name=?");
+    $request_sql->bind_param("sss", $data['first_name'], $data['mid_name'], $data['last_name']);
+    $request_sql->execute();
+
+    $request_result = $request_sql->get_result();
+    $request_count = $request_result->num_rows;
+
+    if($request_count > 0){
+        return true;
+    } else {
+        return false;
+    }
+}

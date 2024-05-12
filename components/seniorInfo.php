@@ -17,7 +17,7 @@ if (isset($_GET['id']) && $_GET['info'] === 'profile') {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 d-flex flex-column align-items-center">
-                <img style="width: 30%" class="img-thumbnail mb-2" src="../assets/seniors/profile/2x2 pic.jpg" alt="senior_profile">
+                <img style="width: 30%" class="img-thumbnail mb-2" src="../assets/seniors/profile/{$senior['id_pic']}" alt="senior_profile">
                 <h2>{$senior['first_name']} {$senior['last_name']}</h2>
                 <p>Joined on {$joined->format("F Y")}</p>
             </div>
@@ -30,7 +30,7 @@ if (isset($_GET['id']) && $_GET['info'] === 'profile') {
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item  " role="presentation">
                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Contact Info</button>
                     </li>
                     <li class="nav-item" role="presentation">
