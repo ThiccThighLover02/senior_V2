@@ -181,31 +181,31 @@ include './database/db_connect.php';
                                     <span class="invalid-feedback">Required</span>
                                 </div>
                                 <div class="form-check">
-                                    <input name="other_health" id="other-health" value="Hypertension" type="checkbox" class="form-check-input">
+                                    <input name="other_health[]" id="other-health" value="Hypertension" type="checkbox" class="form-check-input">
                                     <label for="" class="form-check-label ">Hypertension</label>
                                 </div>
                                 <div class="form-check">
-                                    <input name="other_health" id="other-health" value="Arthritis/Gout" type="checkbox" class="form-check-input">
+                                    <input name="other_health[]" id="other-health" value="Arthritis/Gout" type="checkbox" class="form-check-input">
                                     <label for="" class="form-check-label ">Arthritis/Gout</label>
                                 </div>
                                 <div class="form-check">
-                                    <input name="other_health" id="other-health" value="Coronary Heart Disease" type="checkbox" class="form-check-input">
+                                    <input name="other_health[]" id="other-health" value="Coronary Heart Disease" type="checkbox" class="form-check-input">
                                     <label for="" class="form-check-label ">Coronary Heart Disease</label>
                                 </div>
                                 <div class="form-check">
-                                    <input name="other_health" id="other-health" value="Diabetes" type="checkbox" class="form-check-input">
+                                    <input name="other_health[]" id="other-health" value="Diabetes" type="checkbox" class="form-check-input">
                                     <label for="" class="form-check-label ">Diabetes</label>
                                 </div>
                                 <div class="form-check">
-                                    <input name="other_health" id="other-health" value="Chronic Heart Disease" type="checkbox" class="form-check-input">
+                                    <input name="other_health[]" id="other-health" value="Chronic Heart Disease" type="checkbox" class="form-check-input">
                                     <label for="" class="form-check-label ">Chronic Heart Disease</label>
                                 </div>
                                 <div class="form-check">
-                                    <input name="other_health" id="other-health" value="Alzheimer/Dementia" type="checkbox" class="form-check-input">
+                                    <input name="other_health[]" id="other-health" value="Alzheimer/Dementia" type="checkbox" class="form-check-input">
                                     <label for="" class="form-check-label ">Alzheimer's/Dementia</label>
                                 </div>
                                 <div class="form-check">
-                                    <input name="other_health" id="other-health" value="Chronic Obstructive Pulmonary Diesease" type="checkbox" class="form-check-input">
+                                    <input name="other_health[]" id="other-health" value="Chronic Obstructive Pulmonary Diesease" type="checkbox" class="form-check-input">
                                     <label for="" class="form-check-label ">Chronic Obstructive Pulmonary Disease</label>
                                 </div>
                             </div>

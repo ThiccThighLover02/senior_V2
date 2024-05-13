@@ -130,6 +130,7 @@ if (isset($_GET['id']) && $_GET['info'] === 'profile') {
     $id = $_GET['id']; //Get the id
     $request = getRequestInfo($conn, $id); //get all the info of the request from the id
     $contact1 = str_pad($request['cell_no'], 13, "+63", STR_PAD_LEFT);
+    $other_health = unserialize($request['health']);
 
     $html .= <<<HTML
     
@@ -231,13 +232,13 @@ if (isset($_GET['id']) && $_GET['info'] === 'profile') {
                         <div class="col-6">
                         <h3 class="text-primary">Health Conditions</h3>
                             <ul class="list-group">
-                                <li class="list-group-item">Hypertension</li>
-                                <li class="list-group-item">Arthritis</li>
-                                <li class="list-group-item">Coronary heart diesease</li>
-                                <li class="list-group-item">Diabetes</li>
-                                <li class="list-group-item">Chronic kidney disease</li>
-                                <li class="list-group-item">Alzheimer's/Dementia</li>
-                                <li class="list-group-item">Chronic Obstructive Pulmonary disease</li>
+    HTML;
+    foreach($other_health as $key => $health){
+        $html .= <<<HTML
+            <li class="list-group-item">{$health}</li>
+        HTML;
+    }
+    $html .= <<<HTML
                             </ul>
                         </div>
                     </div>

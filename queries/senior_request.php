@@ -5,10 +5,6 @@ if (isset($_SESSION['admin'])) {
     if (isset($_POST['action']) && $_POST['action'] === "request") {
         include '../database/db_connect.php';
         $extension = ".jpeg";
-        $reponse = array(
-            "success" => false,
-            "message" => ""
-        );
 
         //first let's handle the images
         $temp_profile = $_FILES['id_pic']['tmp_name']; //temporary name
@@ -36,6 +32,7 @@ if (isset($_SESSION['admin'])) {
 
         $new_bar = uniqid("REQUEST-BAR", false) . $extension; //new name of the barangay image
         $bar_path = "../assets/requests/bar_certificate/" . $new_bar; //new file path
+        $other_health = $_POST['other_health'];
 
         //After we have finished with the images we'll move one to the other information
         $_POST['id_pic'] = $new_profile;
@@ -44,12 +41,14 @@ if (isset($_SESSION['admin'])) {
 
         //execute the code using addRequest function, and conn and post info as parameters
         include './requests_queries.php'; //import this file so we can use the function below
-        if(requestExist($conn, $_POST)){
-            $response['message'] = "Your request has already been made, please wait for approval which will be sent via email";
-
-            echo json_encode($response);
-        }
-        elseif (addRequest($conn, $_POST)) {
+        // if(requestExist($conn, $_POST)){
+        //     $reponse = array(
+        //         "success" => false,
+        //         "message" => "Request has already been made"
+        //     );
+        //     echo json_encode($response);
+        // }
+        if (addRequest($conn, $_POST)) {
             global $temp_profile, $temp_birth, $temp_bar; //declare the global temporary values
             global $profile_path, $birth_path, $bar_path; //declare the new path for the images
 
@@ -58,12 +57,17 @@ if (isset($_SESSION['admin'])) {
             move_uploaded_file($temp_birth, $birth_path); //move uploaded file to new directory
             move_uploaded_file($temp_bar, $bar_path); //move uploaded file to new directory
 
-            $response['success'] = true;
-            $response['message'] = "Request has been made";
+            $response = array(
+                "success" => true,
+                "message" => "i changed the value"
+            );
 
             echo json_encode($response);
         } else {
-            $response['message'] = "There has been an error, please try again";
+            $response = array(
+                "success" => false,
+                "message" => "There has been an error please try again"
+            );
             echo json_encode($response);
         }
     }

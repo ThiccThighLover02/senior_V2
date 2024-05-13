@@ -43,7 +43,7 @@ if(isset($_GET['table']) && $_GET['table'] === 'seniors'){
 elseif(isset($_GET['table']) && $_GET['table'] === 'requests'){
     $request_row = getRequest($conn, "all");
     $html .= <<<HTML
-<table class="table table-striped table-bordered" id="senior-table">
+<table class="table table-sm table-striped table-bordered" id="senior-table">
     <thead>
         <tr>
             <th>Request No.</th>

@@ -4,9 +4,11 @@ date_default_timezone_set('Asia/Manila');
 function addRequest($conn, $data){
     $current_dateTime = date("Y-m-d H:i:s"); //Current time of request
     $request_stat = "pending"; //Set the status of the request
+    $serialized_health = serialize($data['other_health']);
+
     $request_sql = $conn->prepare("INSERT INTO `request_tbl`(`first_name`, `middle_name`, `last_name`, `extension`, `purok_id`, `barangay_id`, `municipality_id`, `province_id`, `birth_date`, `birth_place`, `sex`, `citizenship`, `blood_id`, `physical_id`, `health`, `request_education_id`, `senior_email`, `cell_no`, `guardian_id`, `request_civil_id`, `request_religion_id`, `id_pic`, `birth_certificate`, `barangay_certificate`, `request_dateTime`, `request_status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    $request_sql->bind_param("ssssiiiissssiisisiiiisssss", $data['first_name'], $data['mid_name'], $data['last_name'], $data['extension'], $data['purok'], $data['barangay'], $data['municipality'], $data['province'], $data['birth_date'], $data['birth_place'], $data['sex'], $data['citizenship'], $data['blood_type'], $data['physical_disability'], $data['other_health'], $data['education'], $data['senior_email'], $data['cell_no'], $data['guardian_id'], $data['civil_stat'], $data['religion'], $data['id_pic'], $data['birth_certificate'], $data['barangay_certificate'], $current_dateTime, $request_stat);
+    $request_sql->bind_param("ssssiiiissssiisisiiiisssss", $data['first_name'], $data['mid_name'], $data['last_name'], $data['extension'], $data['purok'], $data['barangay'], $data['municipality'], $data['province'], $data['birth_date'], $data['birth_place'], $data['sex'], $data['citizenship'], $data['blood_type'], $data['physical_disability'], $serialized_health, $data['education'], $data['senior_email'], $data['cell_no'], $data['guardian_id'], $data['civil_stat'], $data['religion'], $data['id_pic'], $data['birth_certificate'], $data['barangay_certificate'], $current_dateTime, $request_stat);
 
     if($request_sql->execute()){
         return true; //if it has been executed return true
@@ -64,9 +66,10 @@ function getRequestInfo($conn, $id){
     return mysqli_fetch_assoc($request_result);
 }
 
-function requestExist($conn, $data){ //This just checks if the request exists
-    $request_sql = $conn->prepare("SELECT * FROM request_tbl WHERE first_name=? AND middle_name=? AND last_name=?");
-    $request_sql->bind_param("sss", $data['first_name'], $data['mid_name'], $data['last_name']);
+function requestExist($conn, $data){ //This just checks if the request exists based on the name
+    $status = "pending";
+    $request_sql = $conn->prepare("SELECT * FROM request_tbl WHERE request_status=? first_name=? AND middle_name=? AND last_name=? AND extension=?");
+    $request_sql->bind_param("sssss", $status, $data['first_name'], $data['mid_name'], $data['last_name'], $data['extension']);
     $request_sql->execute();
 
     $request_result = $request_sql->get_result();
