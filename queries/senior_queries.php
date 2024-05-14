@@ -1,5 +1,8 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 function handleImage($orig_path, $folder, $new_path, $image_name)
 {
     if (!file_exists($orig_path . $folder . $image_name)) {
@@ -13,6 +16,11 @@ function handleImage($orig_path, $folder, $new_path, $image_name)
 
 function addSenior($conn, $data, $method)
 {
+
+    require '../vendor/phpmailer/phpMailer/src/Exception.php';
+    require '../vendor/phpmailer/phpMailer/src/PHPMailer.php';
+    require '../vendor/phpmailer/phpMailer/src/SMTP.php';
+
     if ($method === 'request') {
         //let's declare all the variables that we need
         $random = random_int(1000, 9999);
@@ -60,6 +68,31 @@ function addSenior($conn, $data, $method)
 
 
         if ($senior_sql->execute()) {
+            //First we have to send the email
+            $subject = "Account Approval";
+            $message = "Hello " . $first_name . " " . $last_name . ", your account has been approved. <br> You may proceed to the senior login page and enter the following credentials:<br>
+
+    <h1>" . "Email: " . $email . "</h1> <br>
+    <h1>" . "Password: " . $password . "</h1>";
+
+            $mail = new PHPMailer(true);
+
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'seniorcitizensystem@gmail.com';
+            $mail->Password = 'qkjtmhbkbuqnixdj';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+
+            $mail->setFrom('seniorcitizensystem@gmail.com');
+            $mail->addAddress($email);
+            $mail->isHTML(true);
+
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+
+            $mail->send();
             return true;
         } else {
             return false;
@@ -109,4 +142,21 @@ function getOneSenior($conn, $id)
     $senior_result = $senior_sql->get_result();
 
     return mysqli_fetch_assoc($senior_result);
+}
+
+
+function checkNo($conn, $no)
+{ //check if number exists in senior 
+    $senior_sql = $conn->prepare("SELECT senior_id FROM senior_tbl WHERE cell_no=?");
+    $senior_sql->bind_param("i", $no);
+    $senior_sql->execute();
+    $senior_result = $senior_sql->get_result();
+
+    $senior_count = mysqli_num_rows($senior_result);
+
+    if ($senior_count > 0) {
+        return true;
+    } else {
+        return false;
+    }
 }

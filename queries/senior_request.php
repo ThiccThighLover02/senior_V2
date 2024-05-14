@@ -2,8 +2,8 @@
 session_start();
 date_default_timezone_set('Asia/Manila');
 if (isset($_SESSION['admin'])) {
+    include '../database/db_connect.php';
     if (isset($_POST['action']) && $_POST['action'] === "request") {
-        include '../database/db_connect.php';
         $extension = ".jpeg";
 
         //first let's handle the images
@@ -32,7 +32,8 @@ if (isset($_SESSION['admin'])) {
 
         $new_bar = uniqid("REQUEST-BAR", false) . $extension; //new name of the barangay image
         $bar_path = "../assets/requests/bar_certificate/" . $new_bar; //new file path
-        $other_health = $_POST['other_health'];
+
+        $other_health = $_POST['other_health']; //checkboxes values, this is an array
 
         //After we have finished with the images we'll move one to the other information
         $_POST['id_pic'] = $new_profile;
@@ -59,7 +60,7 @@ if (isset($_SESSION['admin'])) {
 
             $response = array(
                 "success" => true,
-                "message" => "i changed the value"
+                "message" => "Your request has been sent, request status will be sent via email in 2 to 3 business days"
             );
 
             echo json_encode($response);

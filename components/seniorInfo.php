@@ -140,7 +140,7 @@ if (isset($_GET['id']) && $_GET['info'] === 'profile') {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 d-flex flex-column align-items-center">
-                <img style="width: 30%" class="img-thumbnail mb-2" src="../assets/seniors/profile/2x2 pic.jpg" alt="senior_profile">
+                <img style="width: 30%" class="img-thumbnail mb-2" src="../assets/seniors/profile/{$request['id_pic']}" alt="senior_profile">
                 <h2>{$request['first_name']} {$request['last_name']}</h2>
             </div>
     

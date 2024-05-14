@@ -3,18 +3,18 @@ import getData from "./service.js";
 $(document).ready(function () {
   let signUpForm = $("#login-form");
   let currDate = new Date();
-  
+
   //setup minimum date (at least 100 years)
   let minDate = new Date(currDate);
   minDate.setFullYear(currDate.getFullYear() - 100);
-  const minString = minDate.toISOString().split('T')[0];
+  const minString = minDate.toISOString().split("T")[0];
 
   //setup maximun date (at least 60 years)
   let maxDate = new Date(currDate);
   maxDate.setFullYear(currDate.getFullYear() - 60);
-  const maxString = maxDate.toISOString().split('T')[0];
+  const maxString = maxDate.toISOString().split("T")[0];
 
-  $("#birthDate").attr('max', maxString);
+  $("#birthDate").attr("max", maxString);
 
   signUpForm.submit(function (event) {
     // Check the validity of each input element
@@ -36,7 +36,7 @@ $(document).ready(function () {
       event.stopPropagation();
     } else {
       event.preventDefault();
-      console.log("submitted")
+      console.log("submitted");
       let formData = new FormData(this);
 
       let profilePic = $("#id-pic")[0].files[0]; //We have to handle the image cuz serialize doesn't get this boooo!
@@ -59,14 +59,12 @@ $(document).ready(function () {
           return response.json();
         })
         .then((data) => {
-          const {success, message} = data;
+          const { success, message, exist = false } = data;
           console.log(data);
           if (success) {
-            alert(
-              "Request has been made, once approved the credentials will be sent via email."
-            );
+            alert(message);
             window.location.href = "../new_systemV2/login.php";
-          } else {
+          } else if(!success && exist) {
             alert(message);
           }
           console.log(success, message);
@@ -142,14 +140,12 @@ $(document).ready(function () {
   }
 
   function validateContactInput(input, feedbackElement) {
-    let regex = /^9\d{9}$/;
+    // let regex = /^9\d{9}$/;
     console.log(input.value.match(regex));
     if (!input.checkValidity()) {
       feedbackElement.text("Required");
-    } else if (!regex.test(input.value)) {
-      console.log(regex.test(input.value));
-      feedbackElement.text("Invalid Contact Number");
-      input.setCustomValidity("Invalid Contact Number");
+    } else {
+      
     }
   }
 
