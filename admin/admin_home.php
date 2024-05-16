@@ -84,7 +84,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] === "admin") {
         </div>
     </body>
 
-    <script type="module" src="../js/getResponses.js"></script>
+    <script type="module" src="../dist/getResponses.bundle.js"></script>
     <script src=<?= $bootstrap_js ?>></script>
 
     </html>

@@ -52,7 +52,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] === "admin") {
     </body>
 
     <script src=<?= $bootstrap_js ?>></script>
-    <script type="module" src="../js/requestInfo.js"></script>
+    <script type="module" src="../dist/requestInfo.bundle.js"></script>
 
     </html>
 <?php

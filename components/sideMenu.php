@@ -21,7 +21,7 @@ if ($user === 'admin') {
 
                 <a href="" class="list-group-item list-group-item-lg fs-4 <?= $active === 'events' ? "bg-dark text-white" : "" ?>"><i class="fa-regular fa-address-book"></i> Event Logs</a>
 
-                <a href="" class="list-group-item list-group-item-lg fs-4 <?= $active === 'calendar' ? "bg-dark text-white" : "" ?>"><i class="fa-regular fa-calendar-days"></i> Calendar</a>
+                <a href="admin_calendar.php" class="list-group-item list-group-item-lg fs-4 <?= $active === 'calendar' ? "bg-dark text-white" : "" ?>"><i class="fa-regular fa-calendar-days"></i> Calendar</a>
                 
                 <a href="" class="list-group-item list-group-item-lg fs-4 <?= $active === 'activities' ? "bg-dark text-white" : "" ?>"><i class="fa-solid fa-person-running"></i> Activities</a>
                 <a href="" class="list-group-item list-group-item-lg fs-4"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>

@@ -51,7 +51,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] === "admin") {
     </body>
 
     <script src=<?= $bootstrap_js ?>></script>
-    <script type="module" src="../js/seniorProfile.js"></script>
+    <script type="module" src="../dist/seniorProfile.bundle.js"></script>
 
     </html>
 <?php
