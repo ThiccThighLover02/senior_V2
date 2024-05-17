@@ -60,7 +60,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] === "admin") {
     </body>
 
     <script src=<?= $bootstrap_js ?>></script>
-    <script type="module" src="../dist/getRequests.bundle.js"></script>
+    <script src="../dist/getRequests.bundle.js"></script>
 
     </html>
 <?php

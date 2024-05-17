@@ -338,6 +338,6 @@ include './database/db_connect.php';
 </body>
 <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<script type="module" src="./js/signUp.js"></script>
+<script type="module" src="./dist/signUp.bundle.js"></script>
 
 </html>

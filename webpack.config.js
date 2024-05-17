@@ -15,7 +15,16 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'htdocs')
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'htdocs'),
+    },
+    compress: true,
+    port: 9000,
+    hot: true, // Enable hot module replacement
+    open: false, // Open the browser after server has been started
   },
   module: {
     rules: [

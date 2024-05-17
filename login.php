@@ -53,6 +53,6 @@ include './links.php'; //import the links
 </body>
 <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<script src="./js/formCheck.js"></script>
+<script src="./dist/formCheck.bundle.js"></script>
 
 </html>

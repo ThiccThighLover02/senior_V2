@@ -102,8 +102,8 @@ if (isset($_GET['id']) && $_GET['info'] === 'profile') {
                 <div class="tab-pane fade" role="tabpanel" id="contact">
                     <div class="row">
                         <div class="col-6">
-                        <h3 class="text-primary">{$senior['blood_type']}</h3>
-                            <p>A+</p>
+                        <h3 class="text-primary">Blood Type</h3>
+                            <p>{$senior['blood_type']}</p>
                         </div>
                         <div class="col-6">
                         <h3 class="text-primary">Physical Disability</h3>
