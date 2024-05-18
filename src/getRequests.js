@@ -1,23 +1,26 @@
 import getData from "./service.js";
-import DataTable from 'datatables.net-bs5';
-import 'datatables.net-buttons-bs5';
-import 'datatables.net-buttons/js/buttons.colVis.mjs';
-import 'datatables.net-buttons/js/buttons.html5.mjs';
-import 'datatables.net-buttons/js/buttons.print.mjs';
-import 'datatables.net-responsive-bs5';
-import 'datatables.net-scroller-bs5';
-import 'datatables.net-searchpanes-bs5';
+import initializeTable from "./table.js";
 
 $(document).ready(function () {
   let tableContainer = $("#table-container");
   let spinner = $("#spinner");
 
   getData("components/tables.php?table=requests")
-    .then((response) => response.text())
+    .then((response) => response.json())
     .then((data) => {
+      let {success, htmlData, seniors} = data;
       spinner.hide(); //remove the spinner
       tableContainer.removeClass("d-flex justify-content-center"); //remove the classes
-      tableContainer.html(data); //print the data in the tableContainer
+      tableContainer.html(htmlData); //print the data in the tableContainer
+      if(success){
+        console.log(seniors);
+      }
+      initializeTable("#senior-table", {
+        responsive: true,
+        scrollCollapse: true,
+        scrollY: "255px",
+      });
+      console.log("this should be working though");
       // $("#senior-table").DataTable({
       //   //initialize the table
       //   responsive: true,
@@ -25,6 +28,9 @@ $(document).ready(function () {
       //   scrollY: "255px",
       // });
     })
+    .catch((err) => {
+      console.log(`This is the error: ${err}`);
+    });
 
   tableContainer.on("click", "#view-info", function () {
     let infoData = $(this).data("button-id");

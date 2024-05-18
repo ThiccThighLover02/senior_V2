@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   entry: {
@@ -14,17 +14,17 @@ module.exports = {
     signUp: "./src/signUp.js",
   },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'htdocs')
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'htdocs'),
+      directory: path.join(__dirname, "dist"),
     },
     compress: true,
     port: 9000,
     hot: true, // Enable hot module replacement
-    open: false, // Open the browser after server has been started
+    open: true, // Open the browser after server has been started
   },
   module: {
     rules: [
@@ -32,14 +32,24 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(ttf|woff|woff2|eot|svg)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "fonts/",
+          },
+        },
+      },
+    ],
   },
-  mode: 'development'
+  mode: "development",
 };

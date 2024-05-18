@@ -123,7 +123,7 @@ function seniorLoginCheck($conn, $username, $password)
 
 function getAllSeniors($conn)
 {
-    $senior_sql = $conn->prepare("SELECT * FROM senior_tbl");
+    $senior_sql = $conn->prepare("SELECT * FROM senior_tbl S INNER JOIN purok_tbl P ON S.senior_purok_id=P.purok_id INNER JOIN barangay_tbl B ON S.senior_barangay_id=B.barangay_id INNER JOIN municipality_tbl M ON S.senior_municipality_id=M.municipality_id INNER JOIN province_tbl Pr ON S.senior_province_id=Pr.province_id");
     $senior_sql->execute();
     $senior_result = $senior_sql->get_result();
 

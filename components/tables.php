@@ -8,7 +8,7 @@ $html = "";
 if(isset($_GET['table']) && $_GET['table'] === 'seniors'){
     $senior_row = getAllSeniors($conn); //get all the seniors from the database
     $html .= <<<HTML
-    <table class="table table-sm table-striped table-bordered" id="senior-table">
+    <table class="table table-sm table-striped table-bordered" style="min-width: 100%;" id="senior-table">
         <thead>
             <tr>
                 <th>Senior No</th>
@@ -22,6 +22,8 @@ if(isset($_GET['table']) && $_GET['table'] === 'seniors'){
     
     foreach ($senior_row as $senior) {
         $senior_id = str_pad($senior['senior_id'], 6, "0", STR_PAD_LEFT);
+        $address = "{$senior['purok_no']}, {$senior['barangay_name']}, {$senior['municipality_name']}, {$senior['province_name']}";
+        $birthdate = 
         $html .= <<<HTML
             <tr>
                 <td class="text-center align-middle">{$senior_id}</td>
@@ -38,7 +40,13 @@ if(isset($_GET['table']) && $_GET['table'] === 'seniors'){
     </table>
     HTML;
     
-    echo $html;
+    $response = array(
+        "success" => true,
+        "htmlData" => $html,
+        "seniors" => $senior_row
+    );
+
+    echo json_encode($response);
 }
 elseif(isset($_GET['table']) && $_GET['table'] === 'requests'){
     $request_row = getRequest($conn, "all");
