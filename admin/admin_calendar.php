@@ -31,12 +31,11 @@
                 include '../components/sideMenu.php';
                 ?>
             </div>
-            <div class="col-lg-9 d-flex justify-content-center pt-2" id="calendar-container">
-                <!-- <div id="spinner" class="spinner-border" role="status">
+            <div class="col-lg-8 bg-white d-flex justify-content-start p-2" id="calendar">
+                <div id="spinner" class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                     
-                </div> -->
-                <div id="calendar"></div>
+                </div>
             </div>
         </div>
     </body>
