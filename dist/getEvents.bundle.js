@@ -16,7 +16,17 @@
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fullcalendar/core */ \"./node_modules/@fullcalendar/core/index.js\");\n/* harmony import */ var _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fullcalendar/daygrid */ \"./node_modules/@fullcalendar/daygrid/index.js\");\n/* harmony import */ var _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fullcalendar/timegrid */ \"./node_modules/@fullcalendar/timegrid/index.js\");\n/* harmony import */ var _fullcalendar_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fullcalendar/list */ \"./node_modules/@fullcalendar/list/index.js\");\n\n\n\n\n$(document).ready(function () {\n  let calendarEl = document.getElementById(\"calendar\");\n  let calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__.Calendar(calendarEl, {\n    plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__[\"default\"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__[\"default\"], _fullcalendar_list__WEBPACK_IMPORTED_MODULE_3__[\"default\"]],\n    initialView: \"dayGridMonth\",\n    headerToolbar: {\n      left: \"prev,next today\",\n      center: \"title\",\n      right: \"dayGridMonth,timeGridWeek,listWeek\"\n    }\n  });\n  calendar.render();\n});\n\n//# sourceURL=webpack://new_systemv2/./src/calendar.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fullcalendar/core */ \"./node_modules/@fullcalendar/core/index.js\");\n\nfunction initializeCalendar(selector, conditions = {}) {\n  let calendar = new _fullcalendar_core__WEBPACK_IMPORTED_MODULE_0__.Calendar(selector, conditions);\n  return calendar.render();\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (initializeCalendar);\n\n//# sourceURL=webpack://new_systemv2/./src/calendar.js?");
+
+/***/ }),
+
+/***/ "./src/getEvents.js":
+/*!**************************!*\
+  !*** ./src/getEvents.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _calendar_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calendar.js */ \"./src/calendar.js\");\n/* harmony import */ var _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fullcalendar/daygrid */ \"./node_modules/@fullcalendar/daygrid/index.js\");\n/* harmony import */ var _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fullcalendar/timegrid */ \"./node_modules/@fullcalendar/timegrid/index.js\");\n/* harmony import */ var _fullcalendar_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fullcalendar/list */ \"./node_modules/@fullcalendar/list/index.js\");\n\n\n\n\n$(document).ready(function () {\n  let calendarEl = document.getElementById(\"calendar\");\n  console.log(\"the calendar goes here\");\n  (0,_calendar_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(calendarEl, {\n    plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_1__[\"default\"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_2__[\"default\"], _fullcalendar_list__WEBPACK_IMPORTED_MODULE_3__[\"default\"]],\n    initialView: \"dayGridMonth\",\n    headerToolbar: {\n      left: \"prev,next today\",\n      center: \"title\",\n      right: \"dayGridMonth,timeGridWeek,listWeek\"\n    }\n  });\n});\n\n//# sourceURL=webpack://new_systemv2/./src/getEvents.js?");
 
 /***/ }),
 
@@ -190,7 +200,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/calendar.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/getEvents.js");
 /******/ 	
 /******/ })()
 ;

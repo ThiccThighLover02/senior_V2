@@ -31,7 +31,7 @@
                 include '../components/sideMenu.php';
                 ?>
             </div>
-            <div class="col-lg-6 d-flex justify-content-center pt-2" id="table-container">
+            <div class="col-lg-9 d-flex justify-content-center pt-2" id="calendar-container">
                 <!-- <div id="spinner" class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                     
@@ -42,7 +42,7 @@
     </body>
 
     <script src=<?= $bootstrap_js ?>></script>
-    <script src="../dist/calendar.bundle.js"></script>
+    <script src="../dist/getEvents.bundle.js"></script>
 
     </html>
 <?php

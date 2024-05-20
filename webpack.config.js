@@ -2,9 +2,9 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    calendar: "./src/calendar.js",
     createPost: "./src/createPost.js",
     formCheck: "./src/formCheck.js",
+    getEvents: "./src/getEvents.js",
     getRequests: "./src/getRequests.js",
     getResponses: "./src/getResponses.js",
     getSeniors: "./src/getSeniors.js",

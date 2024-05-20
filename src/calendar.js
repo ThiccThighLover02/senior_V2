@@ -1,11 +1,8 @@
-import { Calendar } from "fullcalendar/index.js";
-$(document).ready(function(){
+import { Calendar } from "@fullcalendar/core";
 
-    let calendarEl = $("#calendar");
-    let calendar = new Calendar(calendarEl, {
-        initialView: "dayGridMonth"
-    });
+function initializeCalendar(selector, conditions = {}){
+    let calendar = new Calendar(selector, conditions);
+    return calendar.render();
+}
 
-    calendar.render();
-
-});
+export default initializeCalendar;
