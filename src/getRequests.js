@@ -8,13 +8,10 @@ $(document).ready(function () {
   getData("components/tables.php?table=requests")
     .then((response) => response.json())
     .then((data) => {
-      let {success, htmlData, seniors} = data;
+      let { success, htmlData, requests } = data;
       spinner.hide(); //remove the spinner
       tableContainer.removeClass("d-flex justify-content-center"); //remove the classes
-      tableContainer.html(htmlData); //print the data in the tableContainer
-      if(success){
-        console.log(seniors);
-      }
+      tableContainer.html(htmlData);
       initializeTable("#senior-table", {
         responsive: true,
         scrollCollapse: true,

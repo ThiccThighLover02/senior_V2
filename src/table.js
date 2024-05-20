@@ -17,9 +17,12 @@ import "datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css";
 import "datatables.net-scroller-bs5/css/scroller.bootstrap5.min.css";
 import "datatables.net-searchpanes-bs5/css/searchPanes.bootstrap5.min.css";
 
+import 'bootstrap-icons/font/bootstrap-icons.css'; //bootstrap icons
+
 pdfmake.vfs = pdfFonts.pdfMake.vfs;
 function initializeTable(selector, configurations = {}) {
-  return new DataTable(selector, configurations);
+  let table = new DataTable(selector, configurations) 
+  return table;
 }
 
 export default initializeTable;

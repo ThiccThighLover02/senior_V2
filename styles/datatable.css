@@ -30,3 +30,13 @@
 .dataTables_wrapper .row .col-md-6:nth-child(2) {
     justify-content: flex-end;
 }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background-color: #3b267d; /* Change this to your desired background color */
+    color: #ffffff !important; /* Change this to your desired text color */
+    border: none; /* Optional: remove border */
+    border-radius: 4px; /* Optional: add border radius */
+    margin: 0 2px; /* Optional: add margin between buttons */
+    padding: 5px 10px; /* Optional: add padding to buttons */
+}

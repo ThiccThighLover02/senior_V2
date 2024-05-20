@@ -79,5 +79,12 @@ $html .= <<<HTML
 </table>
 HTML;
 
-echo $html;
+$response = array(
+    "success" => true,
+    "htmlData" => $html,
+    "requests" => $request_row
+);
+
+echo json_encode($response);
+
 }

@@ -13,10 +13,10 @@ $(document).ready(function () {
   getData("/components/tables.php?table=seniors")
     .then((response) => response.json())
     .then((data) => {
-      let {success, htmlData, seniors} = data;
+      let { success, htmlData, seniors } = data;
       spinner.hide();
       tableContainer.removeClass("d-flex justify-content-center");
-      if(success){
+      if (success) {
         console.log(seniors);
       }
       tableContainer.html(htmlData);
@@ -32,7 +32,7 @@ $(document).ready(function () {
         buttons: [
           {
             extend: "pdf",
-            text: "<i class='fa-regular fa-file-pdf'></i> PDF",
+            text: "<i class='bi bi-filetype-pdf'></i> PDF",
             className: "btn btn-info text-white rounded",
           },
           {
@@ -42,21 +42,53 @@ $(document).ready(function () {
             extend: "spacer",
           },
           {
-            extend: "excel",
-            text: "<i class='fa-regular fa-newspaper'></i> download excel",
-            className: "btn btn-info text-white",
+            text: "<i class='bi bi-file-earmark-excel'></i> Excel",
+            className: "btn btn-info text-white rounded",
+            action: function () {
+              console.log("You have downloaded an excel file");
+            },
           },
           {
-            text: "Add Senior",
+            extend: "spacer",
+          },
+          {
+            extend: "spacer",
+          },
+          {
+            text: "<i class='bi bi-person-add'></i> Add Senior",
             className: "btn btn-info text-white rounded",
             action: function () {
               console.log("You have Added a senior");
             },
           },
         ],
+        // Enable Bootstrap pagination
+        pagingType: "full_numbers",
+        language: {
+          paginate: {
+            previous: '<i class="bi bi-chevron-left"></i>',
+            next: '<i class="bi bi-chevron-right"></i>',
+          },
+        },
       }); //initialize the table that we have imported
     })
     .catch((err) => console.log(err));
+
+  // Add Bootstrap classes to the pagination buttons
+  $(".dataTables_paginate .paginate_button").on("click", function () {
+    $(".dataTables_paginate .paginate_button").removeClass(
+      "btn-primary text-white"
+    );
+    $(this).addClass("btn-primary text-white");
+  });
+
+  // Style the active page number when the table is drawn
+  table.on("draw", function () {
+    const currentPage = table.page.info().page;
+    $(
+      `.dataTables_paginate .paginate_button[data-dt-idx=${currentPage}]`
+    ).addClass("btn-primary text-white");
+  });
 
   tableContainer.on("click", "#view-senior", function () {
     let buttonValue = $(this).data("senior-id");
