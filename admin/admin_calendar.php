@@ -34,7 +34,6 @@
             <div class="col-lg-8 bg-white d-flex justify-content-start p-2" id="calendar">
                 <div id="spinner" class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
-                    
                 </div>
             </div>
         </div>
